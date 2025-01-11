@@ -23,7 +23,7 @@
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
 
-  animation: pan-right 0.5s ease forwards;
+  animation: fadeInOpacity 1s ease forwards;
 }
 
 .rounded-box:hover {
@@ -32,14 +32,32 @@
 
 }
 
-@keyframes pan-right {
+.fade-in {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 2s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+
   from {
     transform: translateX(0px);
   }
   to {
     transform: translateX(50px);
   }
+
+  
 }
+
 
 @media (max-width: 600px) {
   .rounded-box {
