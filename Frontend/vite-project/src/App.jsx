@@ -44,7 +44,7 @@ function App() {
                 <Fire />
               </div>
             )}
-            <div className="percentage-text">{firePercentage}%</div>
+            <div className="percentage-text">Risk factornigger {firePercentage}%</div>
           </div>
           <div className="safety-list">Safety checklist</div>
         </div>
