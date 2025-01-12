@@ -1,6 +1,6 @@
 # SBHacks
 
-Team Members:
+## Team Members:
 
 Jason Boenjamin, Sneha Gurung, Falak Tulsi, Anna Lee
 
