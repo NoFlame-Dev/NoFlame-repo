@@ -15,7 +15,7 @@ import requests
 import os
 app = Flask(__name__)
 model = load_model('wildfire_detection_model.h5')
-
+isFire = False
 
 
 
@@ -74,8 +74,15 @@ def getCurrentForecastFromLatLon():
         json.dumps(getForecastFromLatLon(lat, lon)[0]).encode('utf-8')
     )
 
+@app.route('/fireAlarm', methods=["GET"])
+def fireAlarm():
+    return Response(
+        json.dumps(isFire).encode('utf-8')
+    )
+
 @app.route('/getFireRisk', methods=['GET'])
 def getFireRisk():
+    global isFire
     file = "./unchecked_camera_image/image.jpeg"
     if not os.path.exists(file):
         return jsonify({'error': 'No file saved'}), 400
@@ -91,6 +98,7 @@ def getFireRisk():
     confidence = getModelConfidence(file)
 
     result = float(f"{(fwi + confidence)/2:.2f}")
+    isFire = result > 50
 
         
     print(f"FWI: {fwi} \n Confidence: {confidence} \n Result: {result}")
