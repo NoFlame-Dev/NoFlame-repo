@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import Fire from "./Fire";
+import Fire from "./Fire.jsx";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import { getCurrentForecast, getFireRisk, getCityName } from "./Api.jsx";
 
