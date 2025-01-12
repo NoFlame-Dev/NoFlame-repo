@@ -1,0 +1,68 @@
+.fire {
+    position: relative;
+    width: 50px;
+    height: 100px;
+    margin: 0 auto;
+}
+  
+.flame {
+  position: absolute;
+  bottom: 0;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(255,165,0,1) 0%, rgba(255,69,0,1) 100%);
+  border-radius: 50%;
+  animation: flame-animation 1s infinite ease-in-out;
+  transform-origin: center bottom;
+}
+
+.flame1 {
+  left: 10px;
+  animation-delay: 0s;
+}
+
+.flame2 {
+  left: 5px;
+  animation-delay: 0.2s;
+  width: 50px;
+  height: 50px;
+}
+
+.flame3 {
+  left: 20px;
+  animation-delay: 0.4s;
+  width: 40px;
+  height: 40px;
+}
+
+.flame4 {
+  left: 15px;
+  animation-delay: 0.6s;
+  width: 30px;
+  height: 30px;
+}
+
+.base {
+  position: absolute;
+  bottom: 0;
+  left: 12.5px;
+  width: 25px;
+  height: 15px;
+  background: #222;
+  border-radius: 50%;
+}
+
+@keyframes flame-animation {
+  0% {
+    transform: scaleY(1) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleY(1.2) translateY(-15px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scaleY(0.8) translateY(-25px);
+    opacity: 0;
+  }
+}

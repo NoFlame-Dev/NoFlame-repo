@@ -2,9 +2,21 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Fire from "./Fire";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [firePercentage, setFirePercentage] = useState(0)
+  const HandleIncrease = () => {
+    if (firePercentage < 100) {
+      setFirePercentage(firePercentage + 10);
+    }
+  };
+
+  const HandleDecrease = () => {
+    if (firePercentage > 0) {
+      setFirePercentage(firePercentage - 10);
+    }
+  };
 
   return (
     <div className='dashboard'>
@@ -21,36 +33,36 @@ function App() {
         </div>
        
         <div className="center-column">
-          <div className='fire-percentage'> 0% </div>
+          <div className="fire-percentage"> 
+            {firePercentage > 0 && (
+              <div 
+                className="fire-container"
+                style={{
+                  transform: `scale(${firePercentage/100})`,
+                }}
+              >
+                <Fire />
+              </div>
+            )}
+            <div className="percentage-text">{firePercentage}%</div>
+          </div>
+          <div className="safety-list">Safety checklist</div>
+        </div>
+
+        <div className="right-column">
+          <div className="fire-likely"> Fire is likely </div>
+          <div className="map"> map </div>
         </div>
       </div>
 
+      {/* Buttons to control fire intensity */}
+      <div className="controls">
+        <button onClick={HandleDecrease}>Decrease Fire</button>
+        <button onClick={HandleIncrease}>Increase Fire</button>
+      </div>
       
     </div>
-    
-    // <>
-    //   <div>
-    //     <a href="https://vite.dev" target="_blank">
-    //       <img src={viteLogo} className="logo" alt="Vite logo" />
-    //     </a>
-    //     <a href="https://react.dev" target="_blank">
-    //       <img src={reactLogo} className="logo react" alt="React logo" />
-    //     </a>
-    //   </div>
-    //   <h1>Vite + React</h1>
-    //   <div className="card">
-    //     <button onClick={() => setCount((count) => count + 1)}>
-    //       count is {count}
-    //     </button>
-    //     <p>
-    //       Edit <code>src/App.jsx</code> and save to test HMR
-    //     </p>
-    //   </div>
-    //   <p className="read-the-docs">
-    //     Click on the Vite and React logos to learn more
-    //   </p>
-    // </>
-  )
+  );
 }
 
 export default App
