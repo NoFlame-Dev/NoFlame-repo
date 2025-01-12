@@ -20,6 +20,7 @@ body {
 .dashboard-header {
   display: flex;
   position: absolute;
+  align-items: center;
   top: 20px;
 }
 
@@ -44,12 +45,16 @@ body {
   gap: 1rem;
 }
 
+.logo {
+  width: 100px;
+  height: auto;
+}
 .rounded-box {
   /* must be changed later*/
   width: 200px;
   height: 125px;
   background: linear-gradient(135deg, #444, #222);
-  color: #fff; 
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,7 +89,7 @@ body {
 
 .safety-list {
   width: 300px;
-  height: auto; 
+  height: auto;
   background: linear-gradient(135deg, #444, #222);
   color: #fff;
   display: flex;
@@ -107,14 +112,14 @@ body {
   font-size: 1.2rem;
   font-weight: bold;
   color: white;
-  text-decoration: underline; 
+  text-decoration: underline;
 }
 
 .fire-likely {
   width: 400px;
   height: 150px;
   background: linear-gradient(135deg, #444, #222);
-  color: #fff; 
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -132,7 +137,7 @@ body {
   width: 400px;
   height: 380px;
   background: linear-gradient(135deg, #444, #222);
-  color: #fff; 
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -146,7 +151,6 @@ body {
   animation: fadeInOpacity 1s ease forwards;
 }
 
-
 .rounded-box:hover,
 .fire-percentage:hover,
 .safety-list:hover,
@@ -157,20 +161,20 @@ body {
 }
 
 .fade-in {
-	opacity: 1;
-	animation-name: fadeInOpacity;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
-	animation-duration: 2s;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 2s;
 }
 
 @keyframes fadeInOpacity {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 
   from {
     transform: translateX(0px);
@@ -178,10 +182,7 @@ body {
   to {
     transform: translateX(50px);
   }
-
-  
 }
-
 
 @media (max-width: 600px) {
   .rounded-box {
@@ -235,21 +236,18 @@ body {
   margin: 0.1rem 0;
 }
 
-
-
-.weather-box .location, 
+.weather-box .location,
 .weather-box .temperature {
   font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 0.2rem; 
+  margin-bottom: 0.2rem;
 }
 
-
-
 .risk-value {
-  font-size: 2rem; 
+  font-size: 2rem;
   font-weight: bold;
   margin-left: 6rem;
+  padding-left: 10%;
   margin: 0.2rem 0;
 }
 
@@ -296,7 +294,6 @@ body {
   font-weight: bold;
   margin: 0.2rem;
 }
-
 
 .wind-direction-box {
   display: flex;
