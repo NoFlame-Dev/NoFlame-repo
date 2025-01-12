@@ -105,7 +105,7 @@ def getFireRisk():
 
     result = float(f"{(fwi + confidence)/2:.2f}")
     with fire_lock:
-        isFire = result > 50
+        isFire = result > 30
 
         
     print(f"FWI: {fwi} \n Confidence: {confidence} \n Result: {result}")
