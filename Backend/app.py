@@ -2,6 +2,7 @@ from flask import Flask
 from flask import request
 from flask import Response
 from flask import jsonify
+from flask_cors import CORS
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from timezonefinder import TimezoneFinder
@@ -13,9 +14,14 @@ from tensorflow.keras.models import load_model
 import json
 import requests
 import os
+from threading import Lock
+
 app = Flask(__name__)
+CORS(app)
 model = load_model('wildfire_detection_model.h5')
+
 isFire = False
+fire_lock = Lock()
 
 
 
@@ -98,7 +104,8 @@ def getFireRisk():
     confidence = getModelConfidence(file)
 
     result = float(f"{(fwi + confidence)/2:.2f}")
-    isFire = result > 50
+    with fire_lock:
+        isFire = result > 50
 
         
     print(f"FWI: {fwi} \n Confidence: {confidence} \n Result: {result}")
