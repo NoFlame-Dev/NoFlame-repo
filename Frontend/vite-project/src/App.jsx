@@ -7,12 +7,25 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="dashboard">
-      <div className="rounded-box">Temperature</div>
-      <div className="rounded-box">Humidity</div>
-      <div className="rounded-box">Wind Speed</div>
-      <div className="rounded-box">Positive Reinforcement</div>
+    <div className='dashboard'>
+      <header className='dashboard-header'>
+        <h1>DASHBOARD</h1>
+      </header>
+
+      <div className="boxes">
+        <div className="parent"> 
+          <div className="rounded-box">Temperature</div>
+          <div className='fire-percentage'> 0% </div>
+        </div>
+       
+        <div className="rounded-box">Humidity</div>
+        <div className="rounded-box">Wind Speed</div>
+        <div className="rounded-box">Positive</div>
+      </div>
+
+      
     </div>
+    
     // <>
     //   <div>
     //     <a href="https://vite.dev" target="_blank">
