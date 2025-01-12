@@ -49,7 +49,7 @@ body {
   width: 200px;
   height: 125px;
   background: linear-gradient(135deg, #444, #222);
-  color: #fff; /* text color */
+  color: #fff; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,7 +68,7 @@ body {
   height: 175px;
   flex-direction: column;
   background: linear-gradient(135deg, #444, #222);
-  color: #fff; /* text color */
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -114,7 +114,7 @@ body {
   width: 400px;
   height: 150px;
   background: linear-gradient(135deg, #444, #222);
-  color: #fff; /* text color */
+  color: #fff; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -132,7 +132,7 @@ body {
   width: 400px;
   height: 380px;
   background: linear-gradient(135deg, #444, #222);
-  color: #fff; /* text color */
+  color: #fff; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -232,23 +232,45 @@ body {
 }
 
 .weather-box p {
-  margin: 0.1rem 0; /* Reduce spacing between text lines */
+  margin: 0.1rem 0;
 }
 
-.weather-box .location {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 0.2rem; /* Decrease margin below location */
-}
 
+
+.weather-box .location, 
 .weather-box .temperature {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: bold;
+  margin-bottom: 0.2rem; 
 }
+
+
 
 .risk-value {
   font-size: 2rem; 
   font-weight: bold;
   margin-left: 6rem;
   margin: 0.2rem 0;
+}
+
+.humidity-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  animation: fadeInOpacity 1s ease forwards;
+}
+
+.humidity-title,
+.humidity-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0.2rem;
 }

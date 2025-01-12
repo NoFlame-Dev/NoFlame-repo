@@ -74,7 +74,18 @@ function App() {
             <p>Unable to fetch weather</p>
           )}
           </div>
-          <div className="rounded-box">Humidity</div>
+          <div className="rounded-box humidity-box">
+            {isLoading ? (
+              <p> Loading humidity...</p>
+            ) : weatherData && weatherData.relativeHumidity ? (
+              <>
+                <p className="humidity-title">Humidity</p>
+                <p className="humidity-value">{weatherData.relativeHumidity}%</p>
+              </>
+            ) : (
+              <p>Unable to fetch humidity data</p>
+            )}
+          </div>
           <div className="rounded-box">Wind Speed</div>
           <div className="rounded-box">Positive</div>
         </div>
@@ -118,7 +129,24 @@ function App() {
           </div>
 
         <div className="right-column">
-          <div className="fire-likely"> Fire is likely </div>
+        <div
+  className="fire-likely"
+  style={{
+    background: fireRisk <= 25
+      ? 'linear-gradient(135deg, green, yellow)'  
+      : fireRisk <= 50
+      ? 'linear-gradient(135deg, yellow, orange)'
+      : fireRisk <= 75
+      ? 'linear-gradient(135deg, orange 20%, red 80%)' 
+      : 'linear-gradient(135deg, red 50%, darkred 100%)',      
+    transition: "background 0.5s ease", 
+  }}
+>
+  Likelihood of fire
+</div>
+
+
+
           <div className="map">
             {isLoaded && currentLocation ? (
               <GoogleMap
