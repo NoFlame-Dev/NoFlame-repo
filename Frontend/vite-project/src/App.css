@@ -274,3 +274,89 @@ body {
   font-weight: bold;
   margin: 0.2rem;
 }
+
+.speed-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  animation: fadeInOpacity 1s ease forwards;
+}
+
+.speed-title,
+.speed-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0.2rem;
+}
+
+
+.wind-direction-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  animation: fadeInOpacity 1s ease forwards;
+}
+
+.wind-direction-title,
+.wind-direction-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0.2rem;
+}
+
+.wind-arrow-container {
+  position: relative;
+  width: 60px;
+  height: 200px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wind-arrow {
+  position: relative;
+  width: 10px;
+  height: 20px;
+  transform-origin: bottom center;
+}
+
+.arrow-head {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 12px solid #fff;
+}
+
+.arrow-shaft {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 25px;
+  background: #fff;
+  border-radius: 2px;
+}

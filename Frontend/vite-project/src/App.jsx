@@ -86,8 +86,42 @@ function App() {
               <p>Unable to fetch humidity data</p>
             )}
           </div>
-          <div className="rounded-box">Wind Speed</div>
-          <div className="rounded-box">Positive</div>
+          <div className="rounded-box speed-box">
+
+            {isLoading ? (
+              <p> Loading wind speed...</p>
+            ) : weatherData && weatherData.windVector[0] ? (
+              <>
+                <p className="speed-title">Wind Speed</p>
+                <p className="speed-value">{weatherData.windVector[0]} mph</p>
+              </>
+            ) : (
+              <p>Unable to fetch wind speed</p>
+            )}
+          </div>
+          <div className="rounded-box wind-direction-box">
+            {isLoading ? (
+              <p>Loading wind direction...</p>
+            ) : weatherData && weatherData.windVector[1] ? (
+              <>
+                <p className="wind-direction-title">Wind Direction</p>
+                <p className="wind-direction-value">{weatherData.windVector[1]}°</p>
+                <div className="wind-arrow-container">
+                  <div
+                    className="wind-arrow"
+                    style={{
+                      transform: `rotate(${weatherData.windVector[1]}deg)`,
+                    }}
+                  >
+                    <div className="arrow-head"></div>
+                    <div className="arrow-shaft"></div>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <p>Unable to fetch wind direction</p>
+            )}
+          </div>
         </div>
 
         <div className="center-column">
@@ -130,23 +164,20 @@ function App() {
 
         <div className="right-column">
         <div
-  className="fire-likely"
-  style={{
-    background: fireRisk <= 25
-      ? 'linear-gradient(135deg, green, yellow)'  
-      : fireRisk <= 50
-      ? 'linear-gradient(135deg, yellow, orange)'
-      : fireRisk <= 75
-      ? 'linear-gradient(135deg, orange 20%, red 80%)' 
-      : 'linear-gradient(135deg, red 50%, darkred 100%)',      
-    transition: "background 0.5s ease", 
-  }}
->
-  Likelihood of fire
-</div>
-
-
-
+          className="fire-likely"
+          style={{
+            background: fireRisk <= 25
+              ? 'linear-gradient(135deg, green, yellow)'  
+              : fireRisk <= 50
+              ? 'linear-gradient(135deg, yellow, orange)'
+              : fireRisk <= 75
+              ? 'linear-gradient(135deg, orange 20%, red 80%)' 
+              : 'linear-gradient(135deg, red 50%, darkred 100%)',      
+            transition: "background 0.5s ease", 
+          }}
+        >
+          Likelihood of fire
+        </div>
           <div className="map">
             {isLoaded && currentLocation ? (
               <GoogleMap
