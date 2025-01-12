@@ -28,7 +28,7 @@ def getForecastFromLatLon(lat, lon):
     forecastLink = gridForecastData.json()["properties"]["forecastHourly"]
     forecastResponse = requests.get(forecastLink)
     forecastData = forecastResponse.json()["properties"]["periods"]
-    filtered_forecast_data = [{"startTime": datetime.fromisoformat(item["startTime"]).astimezone(ZoneInfo(timezone)).strftime("%Y-%m-%d %H:%M:%S %Z").split(" ")[:2], "endTime": datetime.fromisoformat(item["endTime"]).astimezone(ZoneInfo(timezone)).strftime("%Y-%m-%d %H:%M:%S %Z").split(" ")[:2], "temperature": item["temperature"], "relativeHumidity": item["relativeHumidity"]["value"], "windVector": [item["windSpeed"][:-4], item["windDirection"]]} for item in forecastData]   
+    filtered_forecast_data = [{"startTime": datetime.fromisoformat(item["startTime"]).astimezone(ZoneInfo(timezone)).strftime("%Y-%m-%d %H:%M:%S %Z").split(" ")[:2], "endTime": datetime.fromisoformat(item["endTime"]).astimezone(ZoneInfo(timezone)).strftime("%Y-%m-%d %H:%M:%S %Z").split(" ")[:2], "temperature": item["temperature"], "relativeHumidity": item["relativeHumidity"]["value"], "windVector": [item["windSpeed"][:-4], item["windDirection"]], "precipitationChance": item["probabilityOfPrecipitation"]["value"]} for item in forecastData]   
 
     return filtered_forecast_data
 
