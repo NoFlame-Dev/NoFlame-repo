@@ -13,14 +13,16 @@ function App() {
       </header>
 
       <div className="boxes">
-        <div className="parent"> 
+        <div className="left-column"> 
           <div className="rounded-box">Temperature</div>
-          <div className='fire-percentage'> 0% </div>
+          <div className="rounded-box">Humidity</div>
+          <div className="rounded-box">Wind Speed</div>
+          <div className="rounded-box">Positive</div>
         </div>
        
-        <div className="rounded-box">Humidity</div>
-        <div className="rounded-box">Wind Speed</div>
-        <div className="rounded-box">Positive</div>
+        <div className="center-column">
+          <div className='fire-percentage'> 0% </div>
+        </div>
       </div>
 
       
