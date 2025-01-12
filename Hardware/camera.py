@@ -22,7 +22,7 @@ def capture_image(filename="image.jpeg"):
     cap.release()
     return True
 
-def post_image(filename, url="http://localhost:5000/upload_image"):
+def post_image(filename, url):
     try:
         with open(filename, 'rb') as img_file:
             files = {'file': img_file}
@@ -33,7 +33,7 @@ def post_image(filename, url="http://localhost:5000/upload_image"):
 
 def main():
     filename = "image.jpeg"
-    url = "http://localhost:5000/upload_image"
+    url = "http://104.35.175.95:5000/upload_image"
 
     while True:
         print("Capturing image...")
