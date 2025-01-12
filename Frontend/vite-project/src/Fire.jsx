@@ -1,13 +1,14 @@
 import React from "react";
 import "./Fire.css";
-import firePng from "./assets/fire.png"
 
 const Fire = () => {
     return (
         <div className="fire">
-            <img src={firePng} alt="Fire" className="flame flame1" />
-            <img src={firePng} alt="Fire" className="flame flame2" />
-            <img src={firePng} alt="Fire" className="flame flame3" />
+            <div className="flame flame1"></div>
+            <div className="flame flame2"></div>
+            <div className="flame flame3"></div>
+            <div className="flame flame4"></div>
+            <div className="base"></div>
         </div>
     );
 };

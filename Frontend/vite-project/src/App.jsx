@@ -1,68 +1,142 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import "./App.css";
 import Fire from "./Fire";
+import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+import { getCurrentForecast, getFireRisk, getCityName } from "./Api.jsx";
 
 function App() {
-  const [firePercentage, setFirePercentage] = useState(0)
-  const HandleIncrease = () => {
-    if (firePercentage < 100) {
-      setFirePercentage(firePercentage + 10);
-    }
-  };
+  const [firePercentage, setFirePercentage] = useState(0);
+  const [currentLocation, setCurrentLocation] = useState(null);
+  const [weatherData, setWeatherData] = useState(null);
+  const [fireRisk, setFireRisk] = useState(null); // Store fire risk
+  const [isLoading, setIsLoading] = useState(true);
+  const [cityName, setCityName] = useState("Fetching...");
 
-  const HandleDecrease = () => {
-    if (firePercentage > 0) {
-      setFirePercentage(firePercentage - 10);
+  // Load Google Maps API
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: "AIzaSyAClGQYQDrnLDd8xxq0-9NIZGtaktlsqb4", // Replace with your actual API key
+  });
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const { latitude, longitude } = position.coords;
+          setCurrentLocation({ lat: latitude, lng: longitude });
+          
+          try {
+            const weather = await getCurrentForecast(latitude, longitude);
+            const risk = await getFireRisk(latitude, longitude);
+            const city = await getCityName(latitude, longitude);
+            setWeatherData(weather);
+            setFireRisk(risk);
+            setCityName(city);
+          } catch (error) {
+            console.error("Error fetching data:", error);
+          } finally {
+            setIsLoading(false);
+          }
+        },
+        (error) => {
+          console.error("Error fetching location:", error);
+          setIsLoading(false);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+      setIsWeatherLoading(false);
     }
+  }, []);
+
+  // Map container style
+  const mapContainerStyle = {
+    width: "100%",
+    height: "100%",
   };
 
   return (
-    <div className='dashboard'>
-      <header className='dashboard-header'>
+    <div className="dashboard">
+      <header className="dashboard-header">
         <h1>DASHBOARD</h1>
       </header>
 
       <div className="boxes">
-        <div className="left-column"> 
-          <div className="rounded-box">Temperature</div>
+        <div className="left-column">
+          <div className="rounded-box weather-box">
+            {isLoading ? (
+            <p> Loading weather...</p>
+          ) : weatherData ? (
+            <>
+              <p className="location">{cityName}</p>
+              <p className="temperature">{weatherData.temperature}°</p>
+            </>
+          ) : (
+            <p>Unable to fetch weather</p>
+          )}
+          </div>
           <div className="rounded-box">Humidity</div>
           <div className="rounded-box">Wind Speed</div>
           <div className="rounded-box">Positive</div>
         </div>
-       
+
         <div className="center-column">
-          <div className="fire-percentage"> 
-            {firePercentage > 0 && (
-              <div 
+          <div className="fire-percentage">
+            { fireRisk !== null && (
+              <>
+                <div className="percentage-text">
+                  Risk Factor:
+                </div> 
+                <p className="risk-value">{fireRisk}</p>
+              </> 
+            )}
+            {fireRisk !== null && fireRisk > 0 && (
+              <div
                 className="fire-container"
                 style={{
-                  transform: `scale(${firePercentage/100})`,
+                  transform: `scale(${fireRisk / 100})`,
                 }}
               >
                 <Fire />
               </div>
             )}
-            <div className="percentage-text">Risk factornigger {firePercentage}%</div>
           </div>
-          <div className="safety-list">Safety checklist</div>
-        </div>
+            <div className="safety-list">
+              <ul>
+              <ul className="safety-title"><strong>Safety checklist</strong></ul>
+              <li><strong>Water (1 gallon per person/day)</strong></li>
+              <li>Non-perishable food</li>
+              <li>Medications and first aid supplies</li>
+              <li>Flashlights, batteries, and phone chargers</li>
+              <li><strong>Important documents (stored in a waterproof bag)</strong></li>
+              <li>AN95 Masks or Respirators</li>
+              <li><strong>Emergency Blanket or Sleeping Bags</strong></li>
+              <li>Portable Radio</li>
+              <li>Clothing and Sturdy Shoes</li>
+              <li>Evacuation Plan and Map</li>
+              </ul>
+            </div>
+          </div>
 
         <div className="right-column">
           <div className="fire-likely"> Fire is likely </div>
-          <div className="map"> map </div>
+          <div className="map">
+            {isLoaded && currentLocation ? (
+              <GoogleMap
+                mapContainerStyle={mapContainerStyle}
+                center={currentLocation}
+                zoom={15}
+              >
+                {/* Marker to indicate user's current location */}
+                <Marker position={currentLocation} />
+              </GoogleMap>
+            ) : (
+              <p>Loading map...</p>
+            )}
+          </div>
         </div>
       </div>
-
-      {/* Buttons to control fire intensity */}
-      <div className="controls">
-        <button onClick={HandleDecrease}>Decrease Fire</button>
-        <button onClick={HandleIncrease}>Increase Fire</button>
-      </div>
-      
     </div>
   );
 }
 
-export default App
+export default App;

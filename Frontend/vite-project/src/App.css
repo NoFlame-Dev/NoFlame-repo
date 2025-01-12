@@ -66,6 +66,7 @@ body {
 .fire-percentage {
   width: 300px;
   height: 175px;
+  flex-direction: column;
   background: linear-gradient(135deg, #444, #222);
   color: #fff; /* text color */
   display: flex;
@@ -83,20 +84,30 @@ body {
 
 .safety-list {
   width: 300px;
-  height: 355px;
+  height: auto; 
   background: linear-gradient(135deg, #444, #222);
-  color: #fff; /* text color */
+  color: #fff;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   border-radius: 40px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   font-weight: bold;
-  cursor: pointer;
+  padding: 20px;
+  line-height: 1.5;
+  overflow-y: auto;
   transition: transform 0.3s, box-shadow 0.3s;
 
   animation: fadeInOpacity 1s ease forwards;
+}
+
+.safety-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: underline; 
 }
 
 .fire-likely {
@@ -183,10 +194,11 @@ body {
 .fire-percentage {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  font-size: 3rem;
+  font-size: 1.5rem;
 }
 
 .fire-container {
@@ -194,8 +206,49 @@ body {
   top: 35px;
   left: 35px;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease;
 }
 
 .percentage-text {
-  margin-left: 7rem;
+  margin-left: 6rem;
+}
+
+.weather-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  animation: fadeInOpacity 1s ease forwards;
+}
+
+.weather-box p {
+  margin: 0.1rem 0; /* Reduce spacing between text lines */
+}
+
+.weather-box .location {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.2rem; /* Decrease margin below location */
+}
+
+.weather-box .temperature {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.risk-value {
+  font-size: 2rem; 
+  font-weight: bold;
+  margin-left: 6rem;
+  margin: 0.2rem 0;
 }
