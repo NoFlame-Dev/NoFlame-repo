@@ -6,11 +6,11 @@
   - [Team Members](#team_members)
   - [Usage](#usage)
   - [Inspiration](#inspiration)
-  - [What It Does](#what_it_does)
-  - [Build Process](#build_process)
+  - [What It Does](#what-it-does)
+  - [Build Process](#build-process)
   - [Challenges](#challenges)
   - [Accomplishments](#accomplishments)
-  - [What's next for NoFlame](#what's_next_for_noflame)
+  - [What's next for NoFlame](#what's-next-for-noflame)
 
 
 ## Team Members:
