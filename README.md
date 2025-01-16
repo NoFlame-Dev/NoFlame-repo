@@ -6,11 +6,11 @@
   - [Team Members](#team_members)
   - [Usage](#usage)
   - [Inspiration](#inspiration)
-  - [What It Does](#what-it-does)
+  - [What it does](#Purpose)
   - [Build Process](#build-process)
   - [Challenges](#challenges)
   - [Accomplishments](#accomplishments)
-  - [What's next for NoFlame](#what's-next-for-noflame)
+  - [What's next for NoFlame](#next-up)
 
 
 ## Team Members:
@@ -32,7 +32,7 @@ The inspiration behind NoFlame was sparked by the Palisade Fires in Los Angeles.
 - 972 structures destroyed; 98 structures damaged
 - 5 civilian fatalities; and 5 firefighter injuries for just Eaton Canyon alone is ridiculous.
 
-## What it does
+## Purpose
 
 NoFlame is an innovative fire detection and prevention system that uses advanced technology to protect lives and property. Here’s how it works and how it’s designed to scale:
 
@@ -106,7 +106,7 @@ By combining IoT, machine learning, and centralized server technology, NoFlame t
 We didn’t just tackle the hard stuff; we turned it into a product we’re genuinely proud of.
 
 
-## What's next for NoFlame
+## Next Up
 
 - Community-Wide Deployment: We aim to expand NoFlame’s reach by integrating more IoT devices and creating a network that monitors entire neighborhoods and natural areas in real-time.  
 - First Responder Collaboration: Partnering with fire departments to provide direct alerts and real-time data, empowering them to act faster and with more precision.  
