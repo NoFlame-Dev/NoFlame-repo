@@ -1,5 +1,18 @@
 # SBHacks
 
+## Table of Contents
+
+
+  - [Team Members](#team_members)
+  - [Usage](#usage)
+  - [Inspiration](#inspiration)
+  - [What It Does](#what_it_does)
+  - [Build Process](#build_process)
+  - [Challenges](#challenges)
+  - [Accomplishments](#accomplishments)
+  - [What's next for NoFlame](#what's_next_for_noflame)
+
+
 ## Team Members:
 
 Jason Boenjamin, Sneha Gurung, Falak Tulsi, Anna Lee
@@ -47,7 +60,7 @@ NoFlame is an innovative fire detection and prevention system that uses advanced
 By combining IoT, machine learning, and centralized server technology, NoFlame transforms fire detection into a proactive and scalable solution. It empowers individuals and equips first responders with the tools they need to mitigate fires swiftly and effectively, ensuring tragedies like the Palisade Fires become a thing of the past.  
 
 
-## How we built it
+## Build Process
 
 1. Brainstorming: Our group initially ruled out the environment Track, deeming it too hard. However, when one of our moms sent an image of our backyard in hellish flames, we knew we had to create a project based on this.
 
@@ -57,7 +70,7 @@ By combining IoT, machine learning, and centralized server technology, NoFlame t
 
 4. Putting it all together: Once all 3-4 aspects were done, we simply merged the created individual branches and created our cohesive project, NoFlame
 
-## Challenges we ran into
+## Challenges
 
 - Remembering how to use CNNs to train a classification model.
 - Learning how to use an ESP32 and breadboard for the first time
@@ -67,7 +80,7 @@ By combining IoT, machine learning, and centralized server technology, NoFlame t
 - Learning how to use Vite and React
 - Creating animations for Flames and using Geolocation for Real-Time Google maps update.
 
-## Accomplishments that we're proud of
+## Accomplishments
 
 - Mastering CNNs:  
   We managed to recall and apply our knowledge of Convolutional Neural Networks to build an accurate fire classification model. This felt like reviving dormant skills and putting them to impactful use.
