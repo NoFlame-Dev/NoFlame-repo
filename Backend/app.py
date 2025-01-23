@@ -26,8 +26,6 @@ fire_lock = Lock()
 
 
 def getForecastFromLatLon(lat, lon):
-    lat = float(request.args.get('lat'))
-    lon= float(request.args.get('lon'))
     tz = TimezoneFinder()
     timezone = tz.timezone_at(lat=lat, lng=lon)
     gridForecastData = requests.get(f"https://api.weather.gov/points/{lat},{lon}")
@@ -67,18 +65,23 @@ def getModelConfidence(file):
 def getFullForecastFromLatLon():
     lat = float(request.args.get('lat'))
     lon= float(request.args.get('lon'))
-    return Response(
-        json.dumps(getForecastFromLatLon(lat, lon)).encode('utf-8')
-    )
+    # return Response(
+    #     json.dumps(getForecastFromLatLon(lat, lon)).encode('utf-8')
+    # )
+    return jsonify(getForecastFromLatLon(lat, lon))
+
 
 
 @app.route('/getCurrentForecastFromLatLon', methods=['GET'])
 def getCurrentForecastFromLatLon():
     lat = float(request.args.get('lat'))
     lon= float(request.args.get('lon'))
-    return Response(
-        json.dumps(getForecastFromLatLon(lat, lon)[0]).encode('utf-8')
-    )
+    # return Response(
+    #     json.dumps(getForecastFromLatLon(lat, lon)[0]).encode('utf-8')
+    # )
+    print(f"Fetching forecast for lat: {lat}, lon: {lon}")
+    return jsonify(getForecastFromLatLon(lat, lon)[0])
+
 
 @app.route('/fireAlarm', methods=["GET"])
 def fireAlarm():
@@ -137,5 +140,4 @@ def upload_image():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=443, ssl_context=('/etc/ssl/certs/myserver/myserver.crt', '/etc/ssl/certs/myserver.key'))
-
+    app.run(debug=True, host="127.0.0.1",port=5000)
